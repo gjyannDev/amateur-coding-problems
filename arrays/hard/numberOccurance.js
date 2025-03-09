@@ -1,5 +1,9 @@
 function countNumberOfOccurrences(obj) {
-  return Object.values(obj)
+  return Object.values(obj).reduce((acc, curr) => {
+    acc[curr] = Object.values(obj).filter((el) => el === curr).length;
+
+    return acc;
+  }, {});
 }
 
 console.log(
