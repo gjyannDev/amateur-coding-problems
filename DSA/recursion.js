@@ -30,3 +30,35 @@ function prodOfArr(arr) {
 
   return prod;
 }
+
+var nestedObject = {
+  data: {
+    num: 2,  
+      info: {
+          stuff: {
+              thing: {
+                  moreStuff: {
+                      magicNumber: 44,
+                      something: 'foo2'
+                  }
+              }
+          }
+      }
+  }
+}
+
+function contains(obj, value) {
+  for (const [key, val] of Object.entries(obj)) {
+    if (Object.values(val).includes(value)) {
+      return true
+    } else {
+      if (val && typeof val === 'object') {
+        if (contains(val, value)) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+}
